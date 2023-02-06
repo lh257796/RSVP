@@ -2,7 +2,7 @@
     <h3>List of all venues: </h3>
     <ul>
     {% for venue in all_venues %}
-        <li><a href="/RSVP/{{ venue.id }}/">{{ venue.venue_name }}</a></li>
+        <li><a href="{% url 'event' venue.id %}">{{ venue.venue_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

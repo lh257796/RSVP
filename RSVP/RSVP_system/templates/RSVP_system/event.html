@@ -1,1 +1,6 @@
-{{venue}}
+<h2>{{venue.venue_name}}</h2>
+<ul>
+  {% for reservation in venue.reservation.all %}
+  <li>{{ reservation.reservation_name }}</li>
+  {% endfor %}
+</ul>
