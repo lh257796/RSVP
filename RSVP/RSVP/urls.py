@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('RSVP/', include('RSVP_App.urls')),
+    path('RSVP/', include('RSVP_system.urls')),
     path('admin/', admin.site.urls),
 ]
