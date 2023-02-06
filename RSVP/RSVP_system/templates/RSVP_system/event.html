@@ -1,6 +1,30 @@
-<h2>{{venue.venue_name}}</h2>
-<ul>
-  {% for reservation in venue.reservation.all %}
-  <li>{{ reservation.reservation_name }}</li>
-  {% endfor %}
-</ul>
+<form action="{% url 'event' venue.id %}" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend><h2>{{ venue.venue_name }}</h2></legend>
+    {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <p><em>Events</em></p>
+    {% for event in venue.event_set.all %}
+    <!-- {{event}} -->
+    <input
+      type="radio"
+      name="event"
+      id="event{{forloop.counter}}"
+      value="{{event.id}}"
+    />
+    <label for="event{{forloop.counter}}">{{event.event_name}}</label>
+    {% endfor %}
+    <br />
+    <label for="fname">First name:</label>
+    <input type="text" name="fname" id="fname" required />
+    <br />
+    <label for="lname">Last name:</label>
+    <input type="text" name="lname" id="lname" required />
+    <br />
+    <label>Email: </label>
+    <input type="email" name="email" id="email" required />
+  </fieldset>
+  <input type="submit" value="Submit" />
+</form>
