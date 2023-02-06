@@ -9,18 +9,19 @@ class Venue(models.Model):
 # name
 
 class Event(models.Model):
-    venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
+    venue = models.ForeignKey(Venue, on_delete=models.CASCADE, default="Bowels Electric")
+    name = models.CharField(max_length=60, default="Default")
     start_time = models.TimeField('Event Start Time')
     end_time = models.TimeField('Event End Time')
     def __str__(self):
-        return '%s - %s' % (self.start_time, self.end_time)
+        return '%s: %s - %s' % (self.name, self.start_time, self.end_time)
 
 # start, end time; venue
 
 
 
 class Reservation(models.Model):
-    venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.CharField(max_length=45)
