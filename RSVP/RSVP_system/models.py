@@ -4,13 +4,16 @@ from django.db import models
 
 class Venue(models.Model):
     venue_name = models.CharField(max_length=45)
-
+    def __str__(self):
+        return self.venue_name
 # name
 
 class Event(models.Model):
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
-    start_time = models.DateTimeField('Event Start Time')
-    end_time = models.DateTimeField('Event End Time')
+    start_time = models.TimeField('Event Start Time')
+    end_time = models.TimeField('Event End Time')
+    def __str__(self):
+        return '%s - %s' % (self.start_time, self.end_time)
 
 # start, end time; venue
 
@@ -21,7 +24,8 @@ class Reservation(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.CharField(max_length=45)
-
+    def __str__(self):
+        return '%s %s' % (self.first_name, self.last_name)
 # first, last name, email
 
 
