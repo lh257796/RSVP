@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 # from django.template import loader
 from django.shortcuts import render
 from .models import Venue, Event
+from django.urls import reverse
 
 
 # Create your views here.
@@ -23,7 +24,19 @@ def index(request):
 # event viewing page with reservation functionality
 # this is a venue page. it should contain a radio option set of events
 # to choose from. then, a first, last name + email can be used to reserve
+
 def event(request, venue_id):
+    venue = get_object_or_404(Venue, pk=venue_id)
+    return render(request, 'RSVP_system/event.html', {'venue':venue})
+
+# def reservation(request, event_id):
+#     event = get_object_or_404(Event, pk=event_id)
+#     return render(request, 'RSVP_system/reservation.html', {'event':event})
+
+
+# confirmation should either fail and render event page again, or success and
+# redirect
+def register(request, venue_id):
     venue = get_object_or_404(Venue, pk=venue_id)
     try:
         selected = venue.event_set.get(pk=request.POST['event'])
@@ -33,14 +46,16 @@ def event(request, venue_id):
             'venue':venue,
             'error_message': "Please select an event and try again."
         })
-    return render(request, 'RSVP_system/event.html', {'venue':venue})
+    else:
+        selected.save()
+        success = "Confirmed your reservation for %s"
+        # always return redirect when POST successful
+        return HttpResponseRedirect(reverse('RSVP_system:confirmation', args=(venue.id,)))
+    # return render(request, 'RSVP_system/event.html', {'venue':venue})
 
 
-# def reservation(request, event_id):
-#     event = get_object_or_404(Event, pk=event_id)
-#     return render(request, 'RSVP_system/reservation.html', {'event':event})
 
-
-def confirmation(request, event_id):
-    response = "Confirmed your reservation for %s"
-    return HttpResponse(response % event_id)
+def confirmation(request, venue_id):
+    response = "Confirmed your reservation for %s! You can now close this page."
+    venue = get_object_or_404(Venue, pk=venue_id)
+    return HttpResponse(response % venue)

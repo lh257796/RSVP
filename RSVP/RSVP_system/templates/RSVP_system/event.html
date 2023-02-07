@@ -1,4 +1,4 @@
-<form action="{% url 'event' venue.id %}" method="post">
+<form action="{% url 'RSVP_system:event' venue.id %}" method="post">
   {% csrf_token %}
   <fieldset>
     <legend><h2>{{ venue.venue_name }}</h2></legend>
@@ -13,8 +13,13 @@
       name="event"
       id="event{{forloop.counter}}"
       value="{{event.id}}"
+      required
     />
-    <label for="event{{forloop.counter}}">{{event.event_name}}</label>
+    <label for="event{{forloop.counter}}">Name: {{event.name}}:</label><br />
+    <label for="event{{forloop.counter}}">Id: {{event.id}}:</label><br />
+    <label for="event{{forloop.counter}}"
+      >Time: {{event.start_time}} - {{event.end_time}}</label
+    ><br />
     {% endfor %}
     <br />
     <label for="fname">First name:</label>
