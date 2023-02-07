@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 # from django.template import loader
 from django.shortcuts import render
-from .models import Venue, Event
+from .models import Venue, Event, Reservation
 from django.urls import reverse
 
 
@@ -19,7 +19,6 @@ def index(request):
     }
     # return HttpResponse(template.render(context, request))
     return render(request, 'RSVP_system/index.html', context)
-
 
 # event viewing page with reservation functionality
 # this is a venue page. it should contain a radio option set of events
@@ -39,20 +38,24 @@ def event(request, venue_id):
 def register(request, venue_id):
     venue = get_object_or_404(Venue, pk=venue_id)
     try:
-        selected = venue.event_set.get(pk=request.POST['event'])
+        selected_event = venue.event_set.get(pk=request.POST['event'])
+        # create a reservation
     except (KeyError, Event.DoesNotExist):
         #display form again
         return render(request, 'RSVP_system/event.html', {
             'venue':venue,
             'error_message': "Please select an event and try again."
         })
-    else:
-        selected.save()
-        success = "Confirmed your reservation for %s"
-        # always return redirect when POST successful
-        return HttpResponseRedirect(reverse('RSVP_system:confirmation', args=(venue.id,)))
+    Reservation.objects.create(
+        event=selected_event,
+        first_name = request.POST['first_name'],
+        last_name = request.POST['last_name'],
+        email = request.POST['email'],
+        )
+    success = "Confirmed your reservation for %s"
+    # always return redirect when POST successful
+    return HttpResponseRedirect(reverse('RSVP_system:confirmation', args=(venue.id,)))
     # return render(request, 'RSVP_system/event.html', {'venue':venue})
-
 
 
 def confirmation(request, venue_id):

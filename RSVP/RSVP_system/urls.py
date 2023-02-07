@@ -11,6 +11,6 @@ app_name = 'RSVP_system'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:venue_id>/', views.event, name='event'),
-    path('<int:venue_id>/reservation', views.event, name='event'),
+    path('<int:venue_id>/register', views.register, name='register'),
     path('<int:venue_id>/confirmation', views.confirmation, name='confirmation'),
 ]

@@ -9,9 +9,8 @@ class Venue(models.Model):
 # name
 
 class Event(models.Model):
-    venue = models.ForeignKey(Venue, on_delete=models.CASCADE, default="Bowels Electric")
+    venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
     name = models.CharField(max_length=60)
-    id = models.AutoField(primary_key=True)
     start_time = models.TimeField('Event Start Time')
     end_time = models.TimeField('Event End Time')
     def __str__(self):
