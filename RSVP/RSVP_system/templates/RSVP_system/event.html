@@ -1,4 +1,5 @@
 <form action="{% url 'RSVP_system:register' venue.id %}" method="post">
+  <!-- Here, I'm posting to 'register' view/url, passing in venu.id -->
   {% csrf_token %}
   <fieldset>
     <legend><h2>{{ venue.venue_name }}</h2></legend>
