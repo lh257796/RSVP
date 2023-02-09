@@ -24,6 +24,8 @@ def index(request):
 # this is a venue page. it should contain a radio option set of events
 # to choose from. then, a first, last name + email can be used to reserve
 
+
+#event: should show JUST a list of reservations, that's it!!
 def event(request, venue_id):
     venue = get_object_or_404(Venue, pk=venue_id)
     return render(request, 'RSVP_system/event.html', {'venue':venue})
