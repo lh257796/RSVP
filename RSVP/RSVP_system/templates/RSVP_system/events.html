@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'RSVP_system/style.css' %}">
+
+{% if all_events %}
+    <h3>List of all events happening: </h3>
+    <ul>
+    {% for event in all_events %}
+        <li><a href="{% url 'RSVP_system:event' venue.id %}">{{ event.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No venues are available.</p>
+{% endif %}
