@@ -33,6 +33,7 @@ def event(request, venue_id):
 
 # reservation: should be able to give a form, post to the register view
 # and should then redirect to confirmation
+# separate css as well
 
 # def reservation(request, event_id):
 #     event = get_object_or_404(Event, pk=event_id)
