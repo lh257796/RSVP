@@ -30,6 +30,10 @@ def event(request, venue_id):
     venue = get_object_or_404(Venue, pk=venue_id)
     return render(request, 'RSVP_system/event.html', {'venue':venue})
 
+
+# reservation: should be able to give a form, post to the register view
+# and should then redirect to confirmation
+
 # def reservation(request, event_id):
 #     event = get_object_or_404(Event, pk=event_id)
 #     return render(request, 'RSVP_system/reservation.html', {'event':event})
