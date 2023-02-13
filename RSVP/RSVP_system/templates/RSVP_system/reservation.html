@@ -1,36 +1,32 @@
-<form action="{% url 'RSVP_system:register' venue.id %}" method="post">
-    <!-- Here, I'm posting to 'register' view/url, passing in venu.id -->
-    <!-- I was accidentally passing in 'event' instead! -->
-    {% csrf_token %}
-    <fieldset>
-      <legend><h2>{{ venue.venue_name }}</h2></legend>
-      {% if error_message %}
-      <p><strong>{{ error_message }}</strong></p>
-      {% endif %}
-      <p><em>Events</em></p>
-      {% for event in venue.event_set.all %}
-      <!-- {{event}} -->
-      <input
-        type="radio"
-        name="event"
-        id="event{{forloop.counter}}"
-        value="{{event.id}}"
-        required
-      />
-      <label for="event{{forloop.counter}}">Name: {{event.name}}:</label><br />
-      <label for="event{{forloop.counter}}"
-        >Time: {{event.start_time}} - {{event.end_time}}</label
-      ><br />
-      {% endfor %}
-      <br />
-      <label for="fname">First name:</label>
-      <input type="text" name="first_name" id="first_name" required />
-      <br />
-      <label for="lname">Last name:</label>
-      <input type="text" name="last_name" id="last_name" required />
-      <br />
-      <label>Email: </label>
-      <input type="email" name="email" id="email" required />
-    </fieldset>
-    <input type="submit" value="Submit" />
-  </form>
+<form action="{% url 'RSVP_system:register' venue.id event.id %}" method="post">
+  <!-- Here, I'm posting to 'register' view/url, passing in venue.id -->
+  <!-- I was accidentally passing in 'event' instead! -->
+  {% csrf_token %}
+  <fieldset>
+    <legend><h2>{{ venue.venue_name }}</h2></legend>
+    {% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <p><em>Event name:</em></p>
+    <input
+      type="radio"
+      name="event"
+      id="event{{forloop.counter}}"
+      value="{{event.id}}"
+      required
+    />
+    <label for="event">{{event.name}}:</label><br />
+    <label for="event">Doors: {{event.start_time}} </label><br/>
+    <label for="event">Ends: {{event.end_time}}</label><br />
+    <br />
+    <label for="fname">First name:</label>
+    <input type="text" name="first_name" id="first_name" required />
+    <br />
+    <label for="lname">Last name:</label>
+    <input type="text" name="last_name" id="last_name" required />
+    <br />
+    <label>Email: </label>
+    <input type="email" name="email" id="email" required />
+  </fieldset>
+  <input type="submit" value="Submit" />
+</form>
