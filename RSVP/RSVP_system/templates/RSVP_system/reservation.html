@@ -1,3 +1,6 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'RSVP_system/style.css' %}">
+
 <form action="{% url 'RSVP_system:register' venue.id event.id %}" method="post">
   <!-- Here, I'm posting to 'register' view/url, passing in venue.id -->
   <!-- I was accidentally passing in 'event' instead! -->
