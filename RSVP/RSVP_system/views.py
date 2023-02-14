@@ -149,3 +149,6 @@ def confirmation(request, venue_id):
 
 
 #---
+
+# check how to import CSS libraries into django (bootstrap, tailwind)
+    # (there are best practices, ie in two scoops)
