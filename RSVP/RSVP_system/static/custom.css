@@ -1,0 +1,23 @@
+li a {
+  color: grey;
+}
+
+h3 {
+  color: wheat;
+  text-align: center;
+}
+
+p {
+  color: green;
+}
+
+a {
+  color: yellow;
+}
+
+/* center h1 */
+
+/* reservation */
+input {
+  width: 100%;
+}

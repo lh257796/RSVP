@@ -1,16 +1,16 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'RSVP_system/style.css' %}">
+<link rel="stylesheet" href="{% static 'modern.css' %}" />
 
 <form action="{% url 'RSVP_system:register' venue.id event.id %}" method="post">
   <!-- Here, I'm posting to 'register' view/url, passing in venue.id -->
   <!-- I was accidentally passing in 'event' instead! -->
+
   {% csrf_token %}
   <fieldset>
     <legend><h2>{{ venue.venue_name }}</h2></legend>
     {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-    <p><em>Event name:</em></p>
     <input
       type="radio"
       name="event"
@@ -18,18 +18,39 @@
       value="{{event.id}}"
       required
     />
-    <label for="event">{{event.name}}:</label><br />
-    <label for="event">Doors: {{event.start_time}} </label><br/>
-    <label for="event">Ends: {{event.end_time}}</label><br />
+    <strong><label for="event">{{event.name}}</label></strong
+    ><br />
+    <div>
+      <label for="event">Doors: {{event.start_time}} </label><br />
+      <label for="event">Ends: {{event.end_time}}</label><br />
+    </div>
     <br />
-    <label for="fname">First name:</label>
-    <input type="text" name="first_name" id="first_name" required />
+    <label for="fname">First name:</label><br/>
+    <input
+      type="text"
+      placeholder="Jane"
+      name="first_name"
+      id="first_name"
+      required
+    />
     <br />
-    <label for="lname">Last name:</label>
-    <input type="text" name="last_name" id="last_name" required />
+    <label for="lname">Last name:</label><br/>
+    <input
+      type="text"
+      placeholder="Doe"
+      name="last_name"
+      id="last_name"
+      required
+    />
     <br />
-    <label>Email: </label>
-    <input type="email" name="email" id="email" required />
+    <label>Email: </label><br/>
+    <input
+      type="email"
+      placeholder="janedoe@gmail.com"
+      name="email"
+      id="email"
+      required
+    />
   </fieldset>
   <input type="submit" value="Submit" />
 </form>

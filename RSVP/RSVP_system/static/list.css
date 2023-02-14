@@ -1,0 +1,10 @@
+/* H3 and list > a */
+
+h3 {
+  color: bisque;
+  text-align: center;
+}
+
+li a {
+  color: grey;
+}

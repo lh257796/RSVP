@@ -1,0 +1,39 @@
+/* li a {
+  color: grey;
+}
+
+h3 {
+  color: wheat;
+  text-align: center;
+}
+
+p {
+  color: green;
+}
+
+a {
+  color: yellow;
+} */
+
+/* center h1 */
+
+/* reservation */
+input[type="text"], input[type="email"] {
+    transition: width 1.4s ease-out;
+  /* color: grey; */
+  /* background-color: lightcoral */
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    width: 100%;
+    /* border: 3px solid #555; */
+    /* background-color: lightgray; */
+  }
+
+label {
+    color: lightslategray;
+}
+input[type="submit"] {
+    color: brown;
+    margin: 4px 2px;
+}
