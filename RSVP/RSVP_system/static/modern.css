@@ -1,39 +1,65 @@
-/* li a {
-  color: grey;
+:root {
+  background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
 }
 
-h3 {
-  color: wheat;
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Lists for index/venues */
+h2 {
   text-align: center;
+  font-size: 45px;
+  color: rgb(14, 86, 144);
+}
+li {
+  font-size: x-large;
+  border-radius: 15px;
+  margin: 45px 45px 45px 45px;
 }
 
-p {
-  color: green;
+li a {
+  color: rgb(100, 146, 192);
+  font-size: xx-large;
+  border-radius: 15px;
+  margin: 10px 10px 10px 10px;
 }
-
-a {
-  color: yellow;
-} */
-
-/* center h1 */
 
 /* reservation */
-input[type="text"], input[type="email"] {
-    transition: width 1.4s ease-out;
+input[type="text"],
+input[type="email"] {
+  transition: width 1.4s ease-in-out;
+  font-size: x-large;
   /* color: grey; */
   /* background-color: lightcoral */
 }
 
-input[type="text"]:focus, input[type="email"]:focus {
-    width: 100%;
-    /* border: 3px solid #555; */
-    /* background-color: lightgray; */
-  }
+input[type="text"]:focus,
+input[type="email"]:focus {
+  width: 25%;
+  /* border: 3px solid #555; */
+  /* background-color: lightgray; */
+}
+
+input {
+  font-size: x-large;
+}
 
 label {
-    color: lightslategray;
+  color: rgb(100, 146, 192);
 }
 input[type="submit"] {
-    color: brown;
-    margin: 4px 2px;
+  color: rgb(100, 146, 192);
+  margin: 4px 2px;
+  font-size: x-large;
+}
+
+legend {
+  text-align: center;
+  color: rgb(14, 86, 144);
+}
+
+form {
+  font-size: xx-large;
+
 }

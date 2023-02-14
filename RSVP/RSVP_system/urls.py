@@ -12,19 +12,13 @@ app_name = 'RSVP_system'
 
 urlpatterns = [
     # path('', views.index, name='index'),
-
-
     path('', Index.as_view()),
 
-
     # /RSVP/ is the index
-
     path('<int:venue_id>/', views.events, name='events'),
 
     # trying to do class-based view:
     # path('<int:venue_id>/', Events.as_view()),
-
-
 
     # /RSVP/1 is the first venue, and contains a list of events
     path('<int:venue_id>/event/<int:event_id>/reservation', views.reservation, name='reservation'),

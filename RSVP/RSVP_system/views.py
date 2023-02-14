@@ -78,9 +78,7 @@ def events(request, venue_id):
 
 def reservation(request, venue_id, event_id):
     venue = get_object_or_404(Venue, pk=venue_id)
-
     event = get_object_or_404(Event, pk=event_id)
-
     context = {
         'venue': venue,
         'event': event
@@ -101,7 +99,7 @@ def reservation(request, venue_id, event_id):
 def register(request, venue_id, event_id):
     venue = get_object_or_404(Venue, pk=venue_id)
     try:
-        selected_event = venue.event_set.get(pk=request.POST['event'])
+        selected_event = venue.event_set.get(pk=event_id)
         print('GOT SELECTED_EVENT', selected_event)
         # experiment here?
         # create a reservation

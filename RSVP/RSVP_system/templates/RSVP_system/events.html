@@ -1,13 +1,15 @@
 <!-- this is the events page of a Venue showing ALL events for that particular venue  -->
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'list.css' %}">
+<link rel="stylesheet" href="{% static 'modern.css' %}">
 
 {% if events %}
-    <h3>List of all events happening at {{venue}} </h3>
+    <h2>Events happening at {{venue}} </h2>
     <ul>
     {% for event in events %}
-        <li><a href="{% url 'RSVP_system:reservation' venue.id event.id %}">{{ event.name }}</a></li>
+        <li><a href="{% url 'RSVP_system:reservation' venue.id event.id %}">{{ event.name }}</a><br/>
+            {{event.start_time}} - {{event.end_time}}
+        </li>
     {% endfor %}
     </ul>
 {% else %}

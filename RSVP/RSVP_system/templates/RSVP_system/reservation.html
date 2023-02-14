@@ -11,13 +11,6 @@
     {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-    <input
-      type="radio"
-      name="event"
-      id="event{{forloop.counter}}"
-      value="{{event.id}}"
-      required
-    />
     <strong><label for="event">{{event.name}}</label></strong
     ><br />
     <div>
@@ -25,7 +18,7 @@
       <label for="event">Ends: {{event.end_time}}</label><br />
     </div>
     <br />
-    <label for="fname">First name:</label><br/>
+    <label for="fname">First name:</label><br />
     <input
       type="text"
       placeholder="Jane"
@@ -34,7 +27,7 @@
       required
     />
     <br />
-    <label for="lname">Last name:</label><br/>
+    <label for="lname">Last name:</label><br />
     <input
       type="text"
       placeholder="Doe"
@@ -43,7 +36,7 @@
       required
     />
     <br />
-    <label>Email: </label><br/>
+    <label>Email: </label><br />
     <input
       type="email"
       placeholder="janedoe@gmail.com"
@@ -51,6 +44,7 @@
       id="email"
       required
     />
+    <br/><br/>
+    <input type="submit" value="Submit" />
   </fieldset>
-  <input type="submit" value="Submit" />
 </form>
