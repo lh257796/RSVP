@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'modern.css' %}">
 
 {% if all_venues %}
-    <h2>List of all venues: </h2>
+    <h2> Venues </h2>
     <ul>
     {% for venue in all_venues %}
         <li><a href="{% url 'RSVP_system:events' venue.id %}">{{ venue.venue_name }}</a></li>
