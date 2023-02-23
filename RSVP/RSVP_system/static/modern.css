@@ -1,9 +1,10 @@
 :root {
-  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  background: black;
 }
 
 * {
   font-family: "Courier New", Courier, monospace;
+  color: white;
 }
 
 /* Lists for index/venues */
